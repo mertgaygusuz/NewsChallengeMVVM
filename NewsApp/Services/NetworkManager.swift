@@ -13,8 +13,6 @@ enum ListType {
 }
 
 final class NetworkManager {
-    //https://newsapi.org/v2/everything?q=besiktas&page=1&apiKey=d0c0635a25a246578cbb644ffc94f786
-    //https://newsapi.org/v2/top-headlines?country=US&apiKey=d0c0635a25a246578cbb644ffc94f786
     
     private let baseURL = "https://newsapi.org/v2"
     private let apiKey = "d0c0635a25a246578cbb644ffc94f786"

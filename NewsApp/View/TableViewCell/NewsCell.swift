@@ -10,7 +10,6 @@ import SnapKit
 
 final class NewsCell: UITableViewCell {
     
-//MARK: - Properties
     static let cellId = "newsCell"
     lazy var title: UILabel = {
         let title = UILabel()
@@ -31,7 +30,6 @@ final class NewsCell: UITableViewCell {
         return image
     }()
     
-//MARK: - Life Cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(title)

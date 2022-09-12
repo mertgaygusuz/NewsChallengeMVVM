@@ -12,10 +12,8 @@ import SafariServices
 
 final class NewsDetailViewController: UIViewController {
     
-//MARK: - Properties
     var viewModel = NewsDetailViewModel()
     
-// MARK: - UI Properties
     private lazy var newsImage: UIImageView = {
         let image = UIImageView()
         image.sizeToFit()
@@ -57,7 +55,7 @@ final class NewsDetailViewController: UIViewController {
     
     private lazy var newsPageButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Keep Reading", for: .normal)
+        button.setTitle("Go to news page", for: .normal)
         button.addTarget(self, action: #selector(newsPageButtonClicked), for: .touchUpInside)
         button.setTitleColor(.black, for: .normal)
         button.layer.masksToBounds = true
@@ -66,7 +64,6 @@ final class NewsDetailViewController: UIViewController {
         return button
     }()
     
-// MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
@@ -106,7 +103,6 @@ final class NewsDetailViewController: UIViewController {
         view.addSubview(newsPageButton)
     }
     
-//MARK: - Configure UI
     override func viewDidLayoutSubviews() {
         
         newsImage.snp.makeConstraints { (make) in
@@ -159,7 +155,6 @@ final class NewsDetailViewController: UIViewController {
         }
     }
     
-//MARK: - Button Actions
     @objc func newsPageButtonClicked() {
         guard let url = URL(string: (viewModel.news?.urlLink)!) else { return }
             let destinationVC = SFSafariViewController(url: url)
@@ -182,7 +177,6 @@ final class NewsDetailViewController: UIViewController {
     }
 }
 
-//MARK: - SFSafariViewControllerDelegate
 extension NewsDetailViewController: SFSafariViewControllerDelegate {
 
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {

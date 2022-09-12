@@ -11,11 +11,9 @@ import SafariServices
 
 final class FavoritesTableViewController: UIViewController {
 
-//MARK: - Properties
     var tableView = UITableView()
     let viewModel = FavoritesTableViewModel()
     
-//MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -45,7 +43,7 @@ final class FavoritesTableViewController: UIViewController {
     private func isEmpty() {
         if viewModel.favoritedNews.count == 0 {
             tableView.isHidden = true
-            showEmptyStateView(title: "Add a favortite news.", message: "We'll save your favorites here for you.", imageString: NewsImages.circleHeartImageSF, in: view)
+            showEmptyStateView(title: "Your Favorite News.", message: "News you add to favorites appear here.", imageString: NewsImages.circleHeartImageSF, in: view)
         } else {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -56,7 +54,6 @@ final class FavoritesTableViewController: UIViewController {
     }
 }
 
-//MARK: - Extension UITableViewDelegate & UITableViewDataSource
 
 extension FavoritesTableViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -96,7 +93,6 @@ extension FavoritesTableViewController: UITableViewDelegate, UITableViewDataSour
     }
 }
 
-//MARK: - SFSafariViewControllerDelegate
 extension FavoritesTableViewController: SFSafariViewControllerDelegate {
 
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {

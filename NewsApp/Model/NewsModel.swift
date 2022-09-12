@@ -6,7 +6,6 @@
 //
 
 import Foundation
-// Sample: https://newsapi.org/v2/top-headlines?country=US&apiKey=d0c0635a25a246578cbb644ffc94f786
 
 struct NewsModel: Codable {
     let status: String

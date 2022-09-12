@@ -16,7 +16,6 @@ final class NewsDetailViewModel {
     var news: Articles?
 }
 
-//MARK: - Core Data
 extension NewsDetailViewModel {
     
     func favoriteNews() {

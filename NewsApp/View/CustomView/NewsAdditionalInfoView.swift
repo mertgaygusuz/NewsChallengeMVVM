@@ -15,7 +15,6 @@ enum ContentType {
 
 final class NewsAdditionalInfoView: UIView {
     
-//MARK: - Properties
     private lazy var symbolImage: UIImageView = {
         let image = UIImageView()
         image.sizeToFit()
@@ -28,8 +27,7 @@ final class NewsAdditionalInfoView: UIView {
         return label
     }()
     
-
-//MARK: - Life Cycle
+    
     init(text: String, contentType: ContentType) {
         super.init(frame: .zero)
         if contentType == .authorInfoView {

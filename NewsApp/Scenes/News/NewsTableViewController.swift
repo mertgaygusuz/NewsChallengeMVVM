@@ -42,7 +42,7 @@ final class NewsTableViewController: UIViewController {
     private func configureSearchController() {
         let searchController = UISearchController()
         searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "Haber başlığını giriniz"
+        searchController.searchBar.placeholder = "Search the news"
         navigationItem.searchController = searchController
     }
     
@@ -55,7 +55,6 @@ final class NewsTableViewController: UIViewController {
     }
 }
 
-//MARK: - Edxtension NewsViewModelDelegate
 extension NewsTableViewController: NewsViewModelDelegate {
     
     func apiRequestCompleted() {
@@ -66,7 +65,6 @@ extension NewsTableViewController: NewsViewModelDelegate {
     }
 }
 
-// MARK: - Extension UITableViewDataSource & UITableViewDelegate
 extension NewsTableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -108,7 +106,6 @@ extension NewsTableViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-//MARK: - Extension UISearchResultsUPdating & UISearchControllerDelegate
 extension NewsTableViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
