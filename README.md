@@ -16,6 +16,6 @@ In this application that I developed using NewsAPI, you can search for news and 
 ```
 
 # Screens
-<img height = 500 width = full src="images/1.png">  <img height = 500 width = full src="images/2.png"> <img height = 500 width = full src="images/3.png">
- <img height = 500 width = full src="images/4.png">
+<img height = 300 width = full src="images/1.png">  <img height = 300 width = full src="images/2.png"> <img height = 300 width = full src="images/3.png">
+ <img height = 300 width = full src="images/4.png">
 
