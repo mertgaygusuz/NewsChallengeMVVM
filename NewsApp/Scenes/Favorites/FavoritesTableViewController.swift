@@ -45,7 +45,7 @@ final class FavoritesTableViewController: UIViewController {
     private func isEmpty() {
         if viewModel.favoritedNews.count == 0 {
             tableView.isHidden = true
-            showEmptyStateView(title: "Add a favortite news.", message: "We'll save your favorites here for you.", imageString: NewsImages.circleHeartImageSF, in: view)
+            showEmptyStateView(title: "Your Favorite News.", message: "News you add to favorites appear here.", imageString: NewsImages.circleHeartImageSF, in: view)
         } else {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
