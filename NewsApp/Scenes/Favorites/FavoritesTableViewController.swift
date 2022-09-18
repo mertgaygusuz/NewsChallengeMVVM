@@ -12,13 +12,20 @@ import SafariServices
 final class FavoritesTableViewController: UIViewController {
 
 //MARK: - Properties
-    var tableView = UITableView()
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(NewsCell.self, forCellReuseIdentifier: NewsCell.cellId)
+        tableView.rowHeight = 140
+        return tableView
+    }()
     let viewModel = FavoritesTableViewModel()
     
 //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
+        addSubViews()
         view.backgroundColor = .systemBackground
     }
     
@@ -31,15 +38,6 @@ final class FavoritesTableViewController: UIViewController {
         super.viewWillAppear(animated)
         viewModel.getFavoritedNews()
         isEmpty()
-    }
-    
-    private func configureTableView() {
-        view.addSubview(tableView)
-        title = "Favorites"
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(NewsCell.self, forCellReuseIdentifier: NewsCell.cellId)
-        tableView.rowHeight = 140
     }
     
     private func isEmpty() {
@@ -55,6 +53,21 @@ final class FavoritesTableViewController: UIViewController {
         }
     }
 }
+
+//MARK: - AddSubView
+
+extension FavoritesTableViewController {
+    
+    private func addSubViews() {
+        configureTableView()
+    }
+    
+    private func configureTableView() {
+        view.addSubview(tableView)
+        title = "Favorites"
+    }
+}
+
 
 //MARK: - Extension UITableViewDelegate & UITableViewDataSource
 
