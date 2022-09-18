@@ -10,6 +10,7 @@ import SnapKit
 
 final class NewsEmptyStateView: UIView {
     
+//MARK: - Properties
     lazy var titleLabel: UILabel = {
         let title = UILabel()
         title.numberOfLines = 2
@@ -36,6 +37,7 @@ final class NewsEmptyStateView: UIView {
         return image
     }()
     
+//MARK: - Life Cycle
     init(title: String, message: String, image: String) {
         super.init(frame: .zero)
         titleLabel.text = title

@@ -11,7 +11,15 @@ import Kingfisher
 final class NewsTableViewController: UIViewController {
     
 //MARK: - Properties
-    var tableView = UITableView()
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(NewsCell.self, forCellReuseIdentifier: NewsCell.cellId)
+        tableView.rowHeight = 140
+        return tableView
+    }()
+    
     var viewModel = NewsViewModel()
     var searchedText: String = ""
     var page = 1
@@ -19,10 +27,9 @@ final class NewsTableViewController: UIViewController {
 //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationController()
-        configureTableView()
+        configureContents()
+        addSubViews()
         showLoadingView()
-        configureSearchController()
 
         viewModel.delegate = self
         viewModel.loadNews(key: nil, type: .listHeadlines, page: 1)
@@ -31,6 +38,30 @@ final class NewsTableViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
+    }
+
+}
+
+//MARK: - AddSubView
+
+extension NewsTableViewController {
+    
+    private func addSubViews() {
+        addTableViewController()
+    }
+    
+    private func addTableViewController() {
+        view.addSubview(tableView)
+    }
+}
+
+//MARK: - ConfigureContents
+
+extension NewsTableViewController {
+    
+    private func configureContents() {
+        configureSearchController()
+        configureNavigationController()
     }
     
     private func configureNavigationController() {
@@ -45,16 +76,9 @@ final class NewsTableViewController: UIViewController {
         searchController.searchBar.placeholder = "Search the news"
         navigationItem.searchController = searchController
     }
-    
-    private func configureTableView() {
-        view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(NewsCell.self, forCellReuseIdentifier: NewsCell.cellId)
-        tableView.rowHeight = 140
-    }
 }
 
+//MARK: - NewsModelDelegate
 extension NewsTableViewController: NewsViewModelDelegate {
     
     func apiRequestCompleted() {
@@ -65,6 +89,7 @@ extension NewsTableViewController: NewsViewModelDelegate {
     }
 }
 
+//MARK: - UITableViewDelegate & UITableViewDataSource
 extension NewsTableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -106,6 +131,7 @@ extension NewsTableViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+//MARK: - UISearchBarDelegate
 extension NewsTableViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
